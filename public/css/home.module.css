@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.cardsWrapper{
+.cardsWrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,4 +15,10 @@
     max-width: 80%;
     gap: 24px;
     overflow: hidden;
+}
+
+@media (max-width: 500px) {
+    .cardsWrapper {
+        max-width: 250px;
+    }
 }
