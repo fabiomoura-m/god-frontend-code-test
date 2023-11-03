@@ -17,8 +17,3 @@
     overflow: hidden;
 }
 
-@media (max-width: 500px) {
-    .cardsWrapper {
-        max-width: 250px;
-    }
-}
