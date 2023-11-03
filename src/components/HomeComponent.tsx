@@ -13,25 +13,22 @@ export const HomeComponent: React.FC = () => {
         let cardList = document.getElementById('card-list');
         let card = cardList?.firstElementChild;
         let cardSize = (card?.clientWidth ?? 0) + 24;
-        let scrollSize = cardList?.scrollWidth ?? 0;
         let scrollPosition = cardList?.scrollLeft ?? 0;
-        if (scrollPosition >= cardSize) {
-            cardList?.scrollTo({ left: scrollPosition - cardSize });
-        }
-        console.log({scrollPosition, scrollSize, cardSize})
+
+        cardList?.scrollTo({ left: scrollPosition - cardSize });
     };
 
-    const onCLickRight = () => {
+    const onCLickNavigate = (position: 'left' | 'right') => {
         let cardList = document.getElementById('card-list');
         let card = cardList?.firstElementChild;
         let cardSize = (card?.clientWidth ?? 0) + 24;
-        let scrollSize = cardList?.scrollWidth ?? 0;
         let scrollPosition = cardList?.scrollLeft ?? 0;
-        if (scrollPosition + cardSize <= scrollSize) {
+
+        if (position === 'left') {
+            cardList?.scrollTo({ left: scrollPosition - cardSize });
+        } else {
             cardList?.scrollTo({ left: scrollPosition + cardSize });
         }
-
-        console.log({scrollPosition, scrollSize})
     };
 
     return (
@@ -44,8 +41,8 @@ export const HomeComponent: React.FC = () => {
                 ))}
             </div>
             <PaginationDesktop
-                onClickLeft={onClickLeft}
-                onClickRight={onCLickRight}
+                onClickLeft={() => onCLickNavigate('left')}
+                onClickRight={() => onCLickNavigate('right')}
             />
         </div>
     );
